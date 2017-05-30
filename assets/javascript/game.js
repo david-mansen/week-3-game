@@ -29,6 +29,13 @@ $(document).ready(function(){
     info = "Your armies killed or wounded "+attacker.buffedAttack+" of their troops. <br> Their armies killed or wounded "+defender.counterAttack+" of your troops.";
     $("#infoText").html(info);
 
+    if(attacker.currentHealth <=0){
+      $("#"+attacker.name).remove();
+      $(".house").remove();
+      info = "You have been defeated and your house is ended!";
+      $("#infoText").html(info);
+    }
+
     if(defender.currentHealth <= 0){
       remainingEnemies--;
       $("#"+defender.name).remove();
@@ -44,11 +51,11 @@ $(document).ready(function(){
 
   var houses = [];
 
-  houses.push(new House("stark", 100, 10, 10));
+  houses.push(new House("stark", 110, 10, 10));
   houses.push(new House("lannister", 200, 20, 20));
-  houses.push(new House("tyrell", 200, 10, 10));
+  houses.push(new House("tyrell", 150, 10, 10));
   houses.push(new House("baratheon", 100, 12, 12));
-  houses.push(new House("targaryen", 10, 5, 5));
+  houses.push(new House("targaryen", 80, 5, 5));
 
   var gameState = "selectHouse";
   var myHouseID;
