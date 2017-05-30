@@ -32,6 +32,8 @@ $(document).ready(function(){
     if(defender.currentHealth <= 0){
       remainingEnemies--;
       $("#"+defender.name).remove();
+      info = "You have defeated House "+defender.name+"!";
+      $("#infoText").html(info);
       gameState = "chooseOpponent";
       if(remainingEnemies <= 0){
         info = "You have defeated your enemies and claimed the Iron Throne!";
